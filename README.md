@@ -213,3 +213,101 @@ SELECT column1, column2, ... FROM table_name WHERE condition;
 SELECT DISTINCT column_name FROM table_name;
 ```
 
+### ORDER BY
+Order by a single column
+```sql
+SELECT * FROM table_name ORDER BY column_name;
+
+SELECT * FROM table_name ORDER BY column_name DESC;
+```
+
+Order by multiple columns
+```sql
+SELECT * FROM table_name ORDER BY column1, column2 DESC;
+```
+
+### GROUP BY
+
+Group by a single column
+```sql
+SELECT column, COUNT(*) FROM table_name GROUP BY column;
+```
+Group by multiple columns
+
+```sql
+SELECT column1, column2, COUNT(*) FROM table_name GROUP BY column1, column2;
+```
+
+### LIMIT
+Retrieve a limited number of rows
+```sql
+SELECT * FROM table_name LIMIT 10;
+```
+Retrieve rows with an offset
+```sql
+SELECT * FROM table_name LIMIT 10 OFFSET 5;
+```
+
+### Aggregate Functions
+
+Count rows
+```sql
+SELECT COUNT(*) FROM table_name;
+```
+Sum values
+```sql
+SELECT SUM(column_name) FROM table_name;
+```
+Average value
+```sql
+SELECT AVG(column_name) FROM table_name;
+```
+Minimum value
+```sql
+SELECT MIN(column_name) FROM table_name;
+```
+Maximum value
+```sql
+SELECT MAX(column_name) FROM table_name;
+```
+
+### String Functions
+
+Concatenate strings
+```sql
+SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM table_name;
+```
+Substring
+```sql
+SELECT SUBSTRING(column_name, start_position, length) FROM table_name;
+```
+Upper and Lowercase
+```sql
+SELECT UPPER(column_name) FROM table_name;
+SELECT LOWER(column_name) FROM table_name;
+```
+### NULL Handling
+Filter NULL values
+```sql
+SELECT * FROM table_name WHERE column_name IS NOT NULL;
+```
+
+Coalesce NULL values
+```sql
+SELECT COALESCE(column_name, 'Default') FROM table_name;
+```
+
+## Joins
+
+### INNER JOIN
+The INNER JOIN keyword selects records that have matching values in both tables.
+```sql
+SELECT * FROM table1 INNER JOIN table2 ON table1.column = table2.column;
+```
+
+### LEFT JOIN (or LEFT OUTER JOIN)
+
+Retrieves all rows from the left table and matching rows from the right table.
+```sql
+SELECT * FROM table1 LEFT JOIN table2 ON table1.column = table2.column;
+```
