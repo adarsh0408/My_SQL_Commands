@@ -184,3 +184,32 @@ Optimizes the storage of a table, defragmenting the data file and reclaiming unu
 ALTER TABLE table_name ENGINE = new_engine;
 ```
 
+## 4. Data Manipulation
+
+### Insert data into a table
+```sql
+INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...);
+```
+
+### Update data in a table
+```sql
+UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition;
+```
+
+### Delete data from a table
+```sql
+DELETE FROM table_name WHERE condition;
+```
+
+### Query data from a table
+
+```sql
+SELECT column1, column2, ... FROM table_name WHERE condition;
+```
+
+### SELECT DISTINCT values
+
+```sql
+SELECT DISTINCT column_name FROM table_name;
+```
+
