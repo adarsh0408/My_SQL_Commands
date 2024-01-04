@@ -311,3 +311,128 @@ Retrieves all rows from the left table and matching rows from the right table.
 ```sql
 SELECT * FROM table1 LEFT JOIN table2 ON table1.column = table2.column;
 ```
+### RIGHT JOIN (or RIGHT OUTER JOIN)
+
+Retrieves all rows from the right table and matching rows from the left table.
+```sql
+SELECT * FROM table1 RIGHT JOIN table2 ON table1.column = table2.column;
+```
+### FULL JOIN (or FULL OUTER JOIN)
+Retrieves all rows when there is a match in either table.
+```sql
+SELECT * FROM table1 FULL JOIN table2 ON table1.column = table2.column;
+```
+### CROSS JOIN
+Produces the Cartesian product of two tables.
+```sql
+SELECT * FROM table1 CROSS JOIN table2;
+```
+
+## Keys and Indexes
+
+### Primary Key
+```sql
+CREATE TABLE table_name (
+  id INT PRIMARY KEY,
+  column1 datatype,
+  column2 datatype,
+  ...
+);
+```
+### Composite Primary Key
+```sql
+CREATE TABLE table_name (
+  id1 INT,
+  id2 INT,
+  PRIMARY KEY (id1, id2)
+);
+```
+
+### Foreign Key
+
+```sql
+CREATE TABLE table_name1 (
+  id INT PRIMARY KEY,
+  column1 datatype,
+  column2 datatype,
+  ...
+);
+
+CREATE TABLE table_name2 (
+  id INT PRIMARY KEY,
+  table1_id INT,
+  FOREIGN KEY (table1_id) REFERENCES table_name1(id)
+);
+```
+
+### Unique Key
+
+```sql
+CREATE TABLE table_name (
+  column1 datatype,
+  column2 datatype,
+  UNIQUE (column1)
+);
+```
+### Index
+
+```sql
+CREATE INDEX index_name ON table_name (column1, column2, ...);
+```
+
+### Full-Text Index
+
+```sql
+CREATE FULLTEXT INDEX index_name ON table_name (column1, column2, ...);
+```
+
+### Show Indexes on a Table
+
+```sql
+SHOW INDEX FROM table_name;
+```
+
+### Add a Primary Key to existing table
+
+```sql
+ALTER TABLE table_name ADD PRIMARY KEY (column1);
+```
+
+### Add a Unique Constraint to existing table
+```sql
+ALTER TABLE table_name ADD UNIQUE (column1);
+```
+
+### Add an Index to existing table
+
+```sql
+ALTER TABLE table_name ADD INDEX index_name (column1, column2, ...);
+```
+
+### Add a Full-Text Index to existing table
+
+```sql
+ALTER TABLE table_name ADD FULLTEXT INDEX index_name (column1, column2, ...);
+```
+
+### Drop a Primary Key
+```sql
+ALTER TABLE table_name DROP PRIMARY KEY;
+```
+
+### Drop a Unique Constraint
+
+```sql
+ALTER TABLE table_name DROP INDEX index_name;
+```
+
+### Drop an Index
+```sql
+ALTER TABLE table_name DROP INDEX index_name;
+```
+
+### Drop a Full-Text Index
+
+```sql
+ALTER TABLE table_name DROP INDEX index_name;
+```
