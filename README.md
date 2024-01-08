@@ -6,10 +6,10 @@
 2. [User Management](#2-user-management)
 2. [Table Operations](#3-table-operations)
 5. [Data Manipulation](#4-data-manipulation)
-4. [Keys & Indexes in SQL](#5-functions)
+4. [Functions](#5-functions)
 5. [Joins in SQL](#6-joins)
-6. [Operators](#7-keys-and-indexes)
-7. [Functions](#8-operators)
+6. [Keys & Indexes in SQL](#7-keys-and-indexes)
+7. [Operators](#8-operators)
 
 ## 1. Database Operations
 
