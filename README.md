@@ -544,3 +544,101 @@ SELECT * FROM table_name WHERE column_name IS NULL;
 SELECT * FROM table_name WHERE column_name IS NOT NULL;
 ```
 
+# MySQL Views Commands
+
+
+1. **Creating a Basic View:**
+    ```sql
+    CREATE VIEW basic_view AS
+    SELECT column1, column2
+    FROM table;
+    ```
+
+2. **Creating a Join View:**
+    ```sql
+    CREATE VIEW employee_department_view AS
+    SELECT employees.emp_id, employees.emp_name, departments.department_name
+    FROM employees
+    JOIN departments ON employees.department_id = departments.department_id;
+    ```
+
+3. **Creating an Aggregated View:**
+    ```sql
+    CREATE VIEW department_salary_view AS
+    SELECT department_id, SUM(emp_salary) AS total_salary
+    FROM employees
+    GROUP BY department_id;
+    ```
+
+4. **Creating a Conditional View:**
+    ```sql
+    CREATE VIEW it_department_view AS
+    SELECT emp_id, emp_name, emp_salary
+    FROM employees
+    WHERE department_id = 'IT';
+    ```
+
+5. **Creating an Updatable View:**
+    ```sql
+    CREATE VIEW updatable_view AS
+    SELECT emp_id, emp_name, emp_salary
+    FROM employees
+    WHERE emp_status = 'Active';
+    ```
+
+    Now, you can update this view using the standard `UPDATE` command.
+
+    ```sql
+    UPDATE updatable_view
+    SET emp_salary = emp_salary * 1.1
+    WHERE emp_id = 101;
+    ```
+
+6. **Creating a Nested View:**
+    ```sql
+    CREATE VIEW nested_view AS
+    SELECT emp_id, emp_name
+    FROM updatable_view
+    WHERE emp_salary > 50000;
+    ```
+
+7. **Creating a View for Inserting and Updating:**
+    ```sql
+    -- Creating a view for inserting and updating but not for deleting
+    CREATE VIEW insert_update_view AS
+    SELECT emp_id, emp_name, emp_salary
+    FROM employees
+    WHERE emp_status = 'Active'
+    WITH CHECK OPTION;
+    ```
+
+    In this example, the `WITH CHECK OPTION` ensures that any data modified through the view must still satisfy the condition specified in the `WHERE` clause (`emp_status = 'Active'`).
+
+8. **Inserting and Updating Data:**
+    You can now use this view to insert and update data:
+
+    ```sql
+    -- Inserting data into the view
+    INSERT INTO insert_update_view (emp_id, emp_name, emp_salary) VALUES (101, 'John Doe', 60000);
+
+    -- Updating data in the view
+    UPDATE insert_update_view
+    SET emp_salary = 65000
+    WHERE emp_id = 101;
+    ```
+
+9. **Deleting Data (Not Allowed):**
+    Attempting to delete data from this view will result in an error:
+
+    ```sql
+    -- Attempting to delete data will result in an error
+    DELETE FROM insert_update_view WHERE emp_id = 101;
+    ```
+
+## Best Practices
+
+- **Keep Views Simple:** Encapsulate relatively simple queries within views.
+- **Consider Performance:** Optimize underlying queries for better performance.
+- **Use Indexes:** Utilize indexes on columns used in joins or WHERE clauses for enhanced performance.
+
+
